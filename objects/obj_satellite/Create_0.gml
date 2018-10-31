@@ -1,0 +1,1 @@
+rotate_speed = 0;
