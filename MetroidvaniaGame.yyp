@@ -79,6 +79,14 @@
             }
         },
         {
+            "Key": "1ad226ce-cdd9-4490-8780-f3ba10dba331",
+            "Value": {
+                "id": "82ff4fb6-db13-494d-92d5-051045998c7d",
+                "resourcePath": "sprites\\endesga_32_1x\\endesga_32_1x.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "1ff24cc2-890a-41bf-942a-daa7f3707477",
             "Value": {
                 "id": "af6cc8d7-a7b3-4405-9465-0cc88897dafa",
@@ -132,6 +140,22 @@
                 "id": "76897a73-a281-4e7f-b85f-687c6af1e6b1",
                 "resourcePath": "views\\3816e062-f295-4ee8-90f7-ec789dcf7c6f.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "3986378a-3fbd-4ebf-9a24-08af924d103a",
+            "Value": {
+                "id": "cbb7fe57-4045-4d6b-b07b-9c720f84686f",
+                "resourcePath": "sprites\\spr_textBoxFadeIn\\spr_textBoxFadeIn.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "3c45db1a-8824-45b9-9f38-cd64eb11b651",
+            "Value": {
+                "id": "61a46c59-7704-42aa-ba5e-703688994cec",
+                "resourcePath": "sprites\\spr_textBoxFadeOut\\spr_textBoxFadeOut.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

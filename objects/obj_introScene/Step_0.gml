@@ -81,8 +81,69 @@ if(waitTimer<=0)
 				rotation = -3
 			}
 			instance_destroy(ast);
-			waitTimer = 1;
+			waitTimer = 100;
 			break;
 			#endregion
+		case 4:
+			textB.image_speed = 1;
+			waitTimer = 48;
+			break;
+		case 5:
+			textB.sprite_index = spr_textBox;
+			textB.image_index = 0;
+			textB.image_speed = 1;
+			waitTimer = 30;
+			break;
+		case 6:
+			scr_changeText(obj_text,"Begin emergency system boot...",false);
+			waitTimer = 250;
+			break;
+		case 7:
+			scr_changeText(obj_text,"Fatal system error detected.",false);
+			waitTimer = 250;
+			break;
+		case 8:
+			scr_changeText(obj_text,"System wakeup call function has been malfunctioning for an unknown period of time.",false);
+			waitTimer = 450;
+			break;
+		case 9:
+			scr_changeText(obj_text,"Running status report...",false);
+			waitTimer = 250;
+			break;
+		case 10:
+			scr_changeText(obj_text,"Power systems: Damaged",false);
+			waitTimer = 250;
+			break;
+		case 11:
+			scr_changeText(obj_text,"Oxygen: Main reserves damaged.  Emergency supply only.",false);
+			waitTimer = 350;
+			break;
+		case 12:
+			scr_changeText(obj_text,"Stasis pods: 1/64 active",false);
+			waitTimer = 250;
+			break;
+		case 13:
+			scr_changeText(obj_text,"Crew life signs: 1 nominal, 63 deceased",false);
+			waitTimer = 300;
+			break;
+		case 14:
+			scr_changeText(obj_text,"Current system objective: Proceed to landing site.",false);
+			waitTimer = 350;
+			break;
+		case 15:
+			scr_changeText(obj_text,"Error.  Landing site beacon cannot be found.  Landing will be attempted using stored coordinates.",false);
+			waitTimer = 450;
+			break;
+		case 16:
+			scr_changeText(obj_text,"",false);
+			waitTimer = 250;
+			break;
+		case 17:
+			textB.sprite_index = spr_textBoxFadeOut;
+			textB.image_speed = 1;
+			textB.image_index = 0;
+			waitTimer = 250;
+			break;
+		
 	}
 }
