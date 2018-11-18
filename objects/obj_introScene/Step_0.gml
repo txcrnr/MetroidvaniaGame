@@ -85,6 +85,7 @@ if(waitTimer<=0)
 			break;
 			#endregion
 		case 4:
+		#region //Text stuff
 			textB.image_speed = 1;
 			waitTimer = 48;
 			break;
@@ -99,11 +100,11 @@ if(waitTimer<=0)
 			waitTimer = 250;
 			break;
 		case 7:
-			scr_changeText(obj_text,"Fatal system error detected.",false);
+			scr_changeText(obj_text,"Major system error detected.",false);
 			waitTimer = 250;
 			break;
 		case 8:
-			scr_changeText(obj_text,"System wakeup call function has been malfunctioning for an unknown period of time.",false);
+			scr_changeText(obj_text,"System clock inactive.",false);
 			waitTimer = 450;
 			break;
 		case 9:
@@ -123,11 +124,12 @@ if(waitTimer<=0)
 			waitTimer = 250;
 			break;
 		case 13:
-			scr_changeText(obj_text,"Crew life signs: 1 nominal, 63 deceased",false);
+			scr_changeText(obj_text,"Crew life signs: 1/64",false);
 			waitTimer = 300;
 			break;
 		case 14:
-			scr_changeText(obj_text,"Current system objective: Proceed to landing site.",false);
+			scr_changeText(obj_text,"Current objective: Proceed to landing site.  Stabilizing rotation.",false);
+			sat.rotate_slow = true;
 			waitTimer = 350;
 			break;
 		case 15:
@@ -144,6 +146,12 @@ if(waitTimer<=0)
 			textB.image_index = 0;
 			waitTimer = 250;
 			break;
-		
+		#endregion
+		//case 17 is last one
+		case 18:
+			with(sat)
+			{
+				sprite_index = spr_satelliteEngine;
+			}
 	}
 }

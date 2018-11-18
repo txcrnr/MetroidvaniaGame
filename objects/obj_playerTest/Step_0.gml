@@ -1,5 +1,5 @@
-//Ground Check
-#region
+
+#region //Ground Check
 var dy = v_speed;
 v_speed += grav;
 var t1 = tilemap_get_at_pixel(tilemap,bbox_left,bbox_bottom+1) & tile_index_mask;
@@ -31,16 +31,15 @@ if(t1!=0 || t2!=0) {
 }
 #endregion
 
-//Ice check
-#region
+
+#region //Ice check
 if(position_meeting(bbox_left,(bbox_bottom+1),obj_blockFreeze) || position_meeting(bbox_right,(bbox_bottom+1),obj_blockFreeze))
 onIce = true;
 else
 onIce = false;
 #endregion
 
-//player input
-#region
+#region//player input
 if (keyboard_check(ord("S")) && !crouching)
 {
 	crouching = true;
