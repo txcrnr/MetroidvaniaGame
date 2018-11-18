@@ -12,7 +12,7 @@ with(sat)
 #endregion
 
 waitTimer--;
-if(waitTimer<=0)
+if(waitTimer<=0) 
 {
 	eventNumber += 1;
 	switch(eventNumber)
@@ -152,6 +152,7 @@ if(waitTimer<=0)
 			with(sat)
 			{
 				sprite_index = spr_satelliteEngine;
+				image_speed = 1;
 			}
 	}
 }
