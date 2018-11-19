@@ -52,7 +52,7 @@ if(waitTimer<=0)
 			#region //Mini Asteroids
 			sat.image_speed = 1;
 			sat.image_index = 1;
-			sat.rotate_speed = .1;
+			sat.rotate_speed = .15;
 			astFrag1 = instance_create_layer(ast.x, ast.y, "Instances", obj_asteroid);
 			astFrag1.image_xscale = 0.3;
 			astFrag1.image_yscale = 0.3;
@@ -138,13 +138,13 @@ if(waitTimer<=0)
 			break;
 		case 16:
 			scr_changeText(obj_text,"",false);
-			waitTimer = 250;
+			waitTimer = 50;
 			break;
 		case 17:
 			textB.sprite_index = spr_textBoxFadeOut;
 			textB.image_speed = 1;
 			textB.image_index = 0;
-			waitTimer = 250;
+			waitTimer = 100;
 			break;
 		#endregion
 		//case 17 is last one
@@ -152,7 +152,7 @@ if(waitTimer<=0)
 			with(sat)
 			{
 				sprite_index = spr_satelliteEngine;
-				image_speed = 1;
+				image_speed = .6;
 			}
 	}
 }
