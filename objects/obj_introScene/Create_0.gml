@@ -8,10 +8,6 @@ textB = instance_create_layer(256, 576, "Instances", obj_textBox);
 
 
 #region //Initialization of screen objs
-moveTime = 0;
-moveWait = 10;
-satX = .25;
-satY = .25;
 
 with(sat)
 {

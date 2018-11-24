@@ -1,15 +1,4 @@
-#region //satellite move
-with(sat)
-{
-	other.moveTime++;
-	if(other.moveTime >= other.moveWait)
-	{
-		x += other.satX;
-		y += other.satY;
-		other.moveTime = 0;
-	}
-}
-#endregion
+
 
 waitTimer--;
 if(waitTimer<=0) 
@@ -153,6 +142,24 @@ if(waitTimer<=0)
 			{
 				sprite_index = spr_satelliteEngine;
 				image_speed = .6;
+				event_user(0);	
+				waitTimer = 450;
 			}
+		break;
+		case 19:
+			with(sat)
+			{
+				image_xscale = .5;
+				image_yscale = .6;
+				image_angle = 210;
+				xAcc = 0;
+				yAcc = 0;
+				accel = false;
+				x = 320;
+				y = -64;
+				satX = .045;
+				satY = .25;
+			}
+		break;
 	}
 }

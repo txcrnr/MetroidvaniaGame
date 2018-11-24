@@ -1,3 +1,15 @@
+
+
+x += satX;
+y += satY;
+
+
+if(accel)
+{
+	satX += xAcc;
+	satY += yAcc;
+}
+
 image_angle += rotate_speed;
 if(image_angle >= 360)
 	image_angle = 0;
