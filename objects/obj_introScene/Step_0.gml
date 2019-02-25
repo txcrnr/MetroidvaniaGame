@@ -85,48 +85,48 @@ if(waitTimer<=0)
 			waitTimer = 30;
 			break;
 		case 6:
-			scr_changeText(obj_text,"Begin emergency system boot...",false);
+			scr_changeText(obj_text,defaultLen,"Begin emergency system boot... testtextheretocheck for length",false);
 			waitTimer = 250;
 			break;
 		case 7:
-			scr_changeText(obj_text,"Major system error detected.",false);
+			scr_changeText(obj_text,defaultLen,"Major system error detected.",false);
 			waitTimer = 250;
 			break;
 		case 8:
-			scr_changeText(obj_text,"System clock inactive.",false);
+			scr_changeText(obj_text,defaultLen,"System clock inactive.",false);
 			waitTimer = 450;
 			break;
 		case 9:
-			scr_changeText(obj_text,"Running status report...",false);
+			scr_changeText(obj_text,defaultLen,"Running status report...",false);
 			waitTimer = 250;
 			break;
 		case 10:
-			scr_changeText(obj_text,"Power systems: Damaged",false);
+			scr_changeText(obj_text,defaultLen,"Power systems: Damaged",false);
 			waitTimer = 250;
 			break;
 		case 11:
-			scr_changeText(obj_text,"Oxygen: Main reserves damaged.  Emergency supply only.",false);
+			scr_changeText(obj_text,defaultLen,"Oxygen: Main reserves damaged. Emergency supply only.",false);
 			waitTimer = 350;
 			break;
 		case 12:
-			scr_changeText(obj_text,"Stasis pods: 1/64 active",false);
+			scr_changeText(obj_text,defaultLen,"Stasis pods: 1/64 active",false);
 			waitTimer = 250;
 			break;
 		case 13:
-			scr_changeText(obj_text,"Crew life signs: 1/64",false);
+			scr_changeText(obj_text,defaultLen,"Crew life signs: 1/64",false);
 			waitTimer = 300;
 			break;
 		case 14:
-			scr_changeText(obj_text,"Current objective: Proceed to landing site.  Stabilizing rotation.",false);
+			scr_changeText(obj_text,defaultLen,"Current objective: Proceed to landing site. Stabilizing rotation.",false);
 			sat.rotate_slow = true;
 			waitTimer = 350;
 			break;
 		case 15:
-			scr_changeText(obj_text,"Error.  Landing site beacon cannot be found.  Landing will be attempted using stored coordinates.",false);
+			scr_changeText(obj_text,defaultLen,"Error. Landing site beacon cannot be found. Landing will be attempted using stored coordinates.",false);
 			waitTimer = 450;
 			break;
 		case 16:
-			scr_changeText(obj_text,"",false);
+			scr_changeText(obj_text,defaultLen,"",false);
 			waitTimer = 50;
 			break;
 		case 17:
@@ -143,8 +143,8 @@ if(waitTimer<=0)
 				sprite_index = spr_satelliteEngine;
 				image_speed = .6;
 				event_user(0);	
-				waitTimer = 450;
 			}
+		waitTimer = 600;
 		break;
 		case 19:
 			with(sat)
@@ -155,10 +155,11 @@ if(waitTimer<=0)
 				xAcc = 0;
 				yAcc = 0;
 				accel = false;
-				x = 320;
+				x = 520;
 				y = -64;
-				satX = .045;
+				satX = .075;
 				satY = .25;
+				event_user(1);
 			}
 		break;
 	}

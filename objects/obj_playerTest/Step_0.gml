@@ -16,7 +16,7 @@ var b2 = 0;
 
 
 
-if(dy < -0.5){
+if(dy < -0.5 && !crouching){
 	sprite_index = spr_playerJumpUp;
 }
 
@@ -323,4 +323,9 @@ if(!keyboard_check(ord("F")))
 {
 	switchCooldown = 0;
 }
+#endregion
+
+//Camera Update
+#region
+camera_set_view_pos(view_camera[0],(x-256),(y-192));
 #endregion

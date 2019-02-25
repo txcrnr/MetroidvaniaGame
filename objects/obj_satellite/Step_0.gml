@@ -18,3 +18,8 @@ if(rotate_slow && rotate_speed > 0 && ((0 < image_angle && image_angle < 20) || 
 	rotate_speed -= .001;
 	correct_angle = true;
 }
+if(image_shrink && image_xscale > 0)
+{
+	image_xscale -= .0005;
+	image_yscale -= .0006;
+}

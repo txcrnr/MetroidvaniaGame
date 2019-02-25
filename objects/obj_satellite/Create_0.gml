@@ -6,3 +6,4 @@ xAcc = 0;
 yAcc = 0;
 satX = .025;
 satY = .025;
+image_shrink = false;

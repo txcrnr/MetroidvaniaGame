@@ -5,7 +5,7 @@ planet = instance_create_layer(512, 64, "Instances", obj_planet);
 ast = instance_create_layer(1056, 598, "Instances", obj_asteroid);
 textOverlay = instance_create_layer(256, 576, "Instances", obj_text);
 textB = instance_create_layer(256, 576, "Instances", obj_textBox);
-
+defaultLen =  (2 * sprite_get_width(spr_textBoxBG) - 48);
 
 #region //Initialization of screen objs
 
@@ -49,5 +49,5 @@ with(textOverlay)
 #endregion
 
 
-scr_changeText(textOverlay, "", false);
+scr_changeText(textOverlay,defaultLen, "", false);
 
