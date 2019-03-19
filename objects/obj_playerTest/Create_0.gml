@@ -1,7 +1,7 @@
 //player vars
 move_speed = 6;
-jump_force = 12;
-grav = 0.5;
+jump_force = 10;
+grav = 0.25;
 v_speed = 0;
 dx = 0;
 crouching = false;
@@ -14,6 +14,8 @@ aimingDirection = [1,0]
 shotType = "normal";
 aimdirection = "straight";
 turncount = 0;
+damageIFrames = 60;
+damageTimer = 0;
 
 //tile info
 var l = layer_get_id("Collision_Map");

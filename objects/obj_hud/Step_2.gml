@@ -9,9 +9,11 @@ else
 	batFrac = global.playerHp - (10*fullBats);
 }
 
+/*
 testTimer += 1;
 if(testTimer > 200)
 	global.playerHp = 60;
+*/
 
 
 sprite_index = hudSprs[batFrac];

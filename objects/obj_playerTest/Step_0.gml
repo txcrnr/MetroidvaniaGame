@@ -306,7 +306,7 @@ else if(t1!=0 || t2!=0) {
 //Shooting
 #region
 if(keyboard_check(vk_shift) && shotTimer == 0)	{
-	instance_create_layer(x+image_xscale*36,y+14 - 16*(keyboard_check(vk_up) - keyboard_check(vk_down)) ,"Instances",obj_projectileTest);
+	instance_create_layer(bbox_right,y,"Instances",obj_projectileTest);
 	shotTimer = 15;
 }
 if(shotTimer>0)
@@ -322,6 +322,20 @@ if(switchCooldown == 0 && keyboard_check(ord("F")))
 if(!keyboard_check(ord("F")))
 {
 	switchCooldown = 0;
+}
+#endregion
+
+//Touch Enemy
+#region
+if(damageTimer == 0 && (position_meeting(bbox_left, bbox_top+2, obj_enemy_parent) || position_meeting( bbox_left, bbox_bottom,obj_enemy_parent) || position_meeting( bbox_right, bbox_top+2,obj_enemy_parent) || position_meeting( bbox_right, bbox_bottom,obj_enemy_parent)))
+{
+	damageTimer = damageIFrames;
+	global.playerHp -= 1;
+}
+
+if(damageTimer > 0)
+{
+	damageTimer--;
 }
 #endregion
 
