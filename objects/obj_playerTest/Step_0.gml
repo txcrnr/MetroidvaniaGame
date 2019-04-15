@@ -2,9 +2,10 @@
 #region //Ground Check
 var dy = v_speed;
 v_speed += grav;
+//Looks for ground below player
 var t1 = tilemap_get_at_pixel(tilemap,bbox_left,bbox_bottom+1) & tile_index_mask;
 var t2 = tilemap_get_at_pixel(tilemap,bbox_right,bbox_bottom+1) & tile_index_mask;
-if(crouching){
+if(actionState == "crouch"){
 var b1 = tilemap_get_at_pixel(tilemap,bbox_left,bbox_top-2) & tile_index_mask;
 var b2 = tilemap_get_at_pixel(tilemap,bbox_right,bbox_top-2) & tile_index_mask;
 }
@@ -16,14 +17,15 @@ var b2 = 0;
 
 
 
-if(dy < -0.5 && !crouching){
+if(dy < -0.5 && actionState != "crouch"){
 	sprite_index = spr_playerJumpUp;
 }
 
-if(!crouching){
+if(actionState != "crouch"){
 if(t1!=0 || t2!=0) {
 	if(keyboard_check(vk_space)){
 		sprite_index = spr_playerJumpUp;
+		actionState = "jump";
 		v_speed = -jump_force;
 		dy = v_speed;
 	}
@@ -31,6 +33,10 @@ if(t1!=0 || t2!=0) {
 }
 #endregion
 
+#region //Items
+if(itemsList.jumpBoots == true)
+	jump_Force = 12;
+#endregion
 
 #region //Ice check
 if(position_meeting(bbox_left,(bbox_bottom+1),obj_blockFreeze) || position_meeting(bbox_right,(bbox_bottom+1),obj_blockFreeze))
@@ -40,21 +46,21 @@ onIce = false;
 #endregion
 
 #region//player input
-if (keyboard_check(ord("S")) && !crouching)
+if (keyboard_check(ord("S")) && (actionState == "idle" || actionState == "running"))
 {
-	crouching = true;
+	actionState = "crouch";
 	sprite_index = spr_playerCrouch;
 	y += 16;
 	if(!onIce && (t1!=0||t2!=0))
 		dx=0;
 }
-else if (crouching == true && keyboard_check(ord("W")) && (b1==0&&b2==0))
+else if (actionState == "crouch" && keyboard_check(ord("W")) && (b1==0&&b2==0))
 {
-	crouching = false;
+	actionState = "idle"
 	sprite_index = spr_playerIdle;
 	y -= 16;
 }
-else if(!onIce && !crouching){
+else if(!onIce && actionState != "crouch"){
 	if (keyboard_check(ord("D")) == keyboard_check(ord("A")))
 	{
 		dx = 7*dx/8;
@@ -69,11 +75,11 @@ else if(!onIce && !crouching){
 	}
 	
 }
-else if (!crouching && (abs(dx)<move_speed && (keyboard_check(ord("D")) || keyboard_check(ord("A")))))
+else if (actionState != "crouch" && (abs(dx)<move_speed && (keyboard_check(ord("D")) || keyboard_check(ord("A")))))
 {
 	dx += ((move_speed/64) * (keyboard_check(ord("D"))-keyboard_check(ord("A"))));
 }
-else if (crouching && !onIce && (t1||t2))
+else if (actionState == "crouch" && !onIce && (t1||t2))
 {
 	dx = 0;
 }
@@ -84,12 +90,13 @@ else if (crouching && !onIce && (t1||t2))
 #region
 if(dy>0) { 
 	if(t1==0 && t2 == 0){
-		if(!crouching)
+		if(actionState != "crouch")
 			sprite_index = spr_playerJumpDown;
+			actionState = "falling";
 	}
 	var t1 = tilemap_get_at_pixel(tilemap, bbox_left, bbox_bottom+1) & tile_index_mask;
 	var t2 = tilemap_get_at_pixel(tilemap, bbox_right, bbox_bottom+1) & tile_index_mask;
-	if(!crouching &&(t1 !=0 || t2!=0))	{
+	if(actionState != "crouch" &&(t1 !=0 || t2!=0))	{
 		y = ((bbox_bottom + 1 & ~31)) - sprite_bbox_bottom - 1;
 		v_speed = 0;
 		dy = 0;
@@ -129,7 +136,7 @@ if(dy>0) {
 else if(dy<0) { 
 	var t1 = tilemap_get_at_pixel(tilemap, bbox_left, bbox_top) & tile_index_mask;
 	var t2 = tilemap_get_at_pixel(tilemap, bbox_right, bbox_top) & tile_index_mask;
-	if(!crouching && (t1 !=0 || t2!=0))	{
+	if(actionState != "crouch" && (t1 !=0 || t2!=0))	{
 		y = ((bbox_top + -32 + sprite_height) & ~31) - sprite_bbox_top;
 		v_speed = 0;
 		dy = 0;
@@ -171,7 +178,7 @@ else if(dy<0) {
 //horizontal move
 #region
 x+=dx;
-if(!crouching){
+if(actionState != "crouch"){
 if(dx>0) { 
 	var t1 = tilemap_get_at_pixel(tilemap, bbox_right+2, bbox_top) & tile_index_mask;
 	var t2 = tilemap_get_at_pixel(tilemap, bbox_right+2, bbox_bottom) & tile_index_mask;
@@ -215,7 +222,7 @@ else { //leftwards
 
 //MODIFIED MOVE FOR CROUCHING
 #region
-if(crouching){
+if(actionState == "crouch"){
 if(dx>0) { //rightwards
 	var t1 = tilemap_get_at_pixel(tilemap, bbox_right, bbox_top) & tile_index_mask;
 	var t2 = tilemap_get_at_pixel(tilemap, bbox_right, bbox_bottom) & tile_index_mask;
@@ -254,7 +261,7 @@ else { //leftwards
 		dx=0;
 	}
 }
-if(crouching && abs(dx)<=.01 && (b1!=0||b2!=0)){
+if(actionState == "crouch" && abs(dx)<=.01 && (b1!=0||b2!=0)){
 	x -= image_xscale*.5;
 	stuckCrouch = true;
 }
@@ -269,10 +276,12 @@ else if(stuckCrouch == true && (b1==0 && b2==0)){
 #region
 var t1 = tilemap_get_at_pixel(tilemap,bbox_left,bbox_bottom+1) & tile_index_mask;
 var t2 = tilemap_get_at_pixel(tilemap,bbox_right,bbox_bottom+1) & tile_index_mask;
-if(!crouching){
+if(actionState != "crouch"){
 if((abs(dx)>0.5 || keyboard_check(ord("D")) || keyboard_check(ord("A")))){
 	if(t1!=0 || t2!=0)
 		sprite_index = spr_playerRun;
+		if(actionState == "idle")
+			actionState = "running";
 	if(dx<0){
 		
 		image_xscale = -1;
@@ -298,7 +307,10 @@ else if(t1!=0 || t2!=0) {
 			sprite_index = spr_playerIdleUpDiag;
 	}
 	else
+	{
 		sprite_index = spr_playerIdle;
+		actionState = "idle";
+	}
 }
 }
 #endregion

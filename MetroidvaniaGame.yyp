@@ -735,6 +735,14 @@
             }
         },
         {
+            "Key": "dcb1d710-d017-4514-95f7-3851cdd1c3e6",
+            "Value": {
+                "id": "80126ec1-f018-4b48-95fa-161d464097e0",
+                "resourcePath": "sprites\\spr_playerWallCling\\spr_playerWallCling.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "de4adfe0-b537-495d-bc8a-953303a30d07",
             "Value": {
                 "id": "2cc45914-d089-47d9-8131-230e27d92922",

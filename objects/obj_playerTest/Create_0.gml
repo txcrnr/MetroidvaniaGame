@@ -1,7 +1,7 @@
 //player vars
 move_speed = 6;
-jump_force = 10;
-grav = 0.25;
+jump_force = 9.2;
+grav = 0.5;
 v_speed = 0;
 dx = 0;
 crouching = false;
@@ -16,6 +16,11 @@ aimdirection = "straight";
 turncount = 0;
 damageIFrames = 60;
 damageTimer = 0;
+
+actionState = "idle";
+
+//Test Item List
+itemsList = instance_create_layer(x,y,"Instances",obj_itemList);
 
 //tile info
 var l = layer_get_id("Collision_Map");
